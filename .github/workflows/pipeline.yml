@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   wf:
-    uses: suspectsoftware/example-workflows/.github/workflows/go-workflow.yml@main
+    uses: suspectsoftware/workflow-examples/.github/workflows/go-workflow.yml@main
     secrets: inherit
 
   versioning:
