@@ -12,6 +12,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  wf:
+    uses: suspectsoftware/example-workflows/.github/workflows/go-workflow.yml@main
+    secrets: inherit
+
   versioning:
     name: Determine
     uses: suspectsoftware/action-semantic-versioning/.github/workflows/main.yml@v1
