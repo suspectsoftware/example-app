@@ -1,6 +1,8 @@
 name: CI/CD
 
 on:
+  push:
+  workflow_dispatch:
   pull_request:
     branches:
       - develop
@@ -11,24 +13,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  versioning:
-    name: Determine
-    uses: suspectsoftware/action-semantic-versioning/.github/workflows/main.yml@v1
-
-  build_pullrequest:
-    name: Build (PR)
-    runs-on: ubuntu-latest
-    needs: [versioning]
-    if: ${{ github.event_name == 'pull_request' }}
-    steps:
-      #- name: Get app token
-      #  id: app_token
-      #  uses: getsentry/action-github-app-token@v3
-      #  with:
-      #    app_id: ${{ secrets.ACTIONS_APP_ID }}
-      #   private_key: ${{ secrets.ACTIONS_APP_PRIVATE_KEY }}
-      #    scope: ${{ github.repository_owner }}
-
-      - name: Write version
-        run: echo "${{ needs.versioning.outputs.FullSemVer }}"
-  
+  wf:
+    uses: suspectsoftware/workflow-examples/.github/workflows/go-workflow.yml@main
+    secrets: inherit
