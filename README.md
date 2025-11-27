@@ -1,2 +1,2 @@
-# example-app
+# Example App
 Test application written in Go
